@@ -26,6 +26,7 @@ function Tabs() {
         {tabItems.map(({ id, icon, title }) => {
           return (
             <div
+              key={id}
               className={active ? "tabitem" : "tabitem tabitem--inactive"}
               onClick={() => setActive(id)}
             >
@@ -36,7 +37,7 @@ function Tabs() {
       </div>
       <div className="content">
         {tabItems.map(({ id, content }) => {
-          return active === id ? content : "";
+          return <div key={id}>{active === id ? content : ""}</div>;
         })}
       </div>
     </div>

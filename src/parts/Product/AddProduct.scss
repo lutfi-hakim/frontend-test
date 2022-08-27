@@ -1,0 +1,105 @@
+.add-product{
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    .top-head{
+        display: flex;
+        border-bottom: 1px solid rgb(232, 231, 231);
+        margin-bottom: 20px;
+        .title{
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    }
+    .add {
+        overflow: hidden;
+        background: white;
+        border-radius: 6px;
+        label {
+            font-size: 14px;
+            color: darkgray;
+            cursor: pointer;
+            float: left;
+            clear: both;
+        }
+        input {
+            float: left;
+            clear: both;
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            display: inline-block;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -ms-transition: 0.2s ease all;
+            -o-transition: 0.2s ease all;
+            transition: 0.2s ease all;
+        }
+        input[type=text] {
+            &:focus {
+                border-color: cornflowerblue;
+            }
+        }
+        select{
+            width: 100%;
+            outline: none;
+            border: 1px solid #bbb;
+            padding: 10px;
+            font-size: 12px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgb(146 161 176 / 15%);
+            cursor: pointer;
+            &:focus,
+            &:hover{
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.329);
+            }
+        }
+        .editors{
+            display: flex;
+            flex-direction: column;
+            margin: 4px 0;
+            .editor {
+                margin: 5px 0;
+                border: 1px solid rgb(215, 215, 215);
+              
+                .rdw-editor-main {
+                  padding: 0 20px 10px;
+                }
+              }
+        }
+    }
+
+    input[type=submit] {
+        padding: 15px 50px;
+        width: auto;
+        background: #1abc9c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        float: right;
+        clear: right;
+        -webkit-transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -ms-transition: 0.2s ease all;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    input[type="submit"] {
+        &:active {
+            opacity: 0.4;
+        }
+    }
+}

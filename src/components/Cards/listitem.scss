@@ -1,20 +1,32 @@
+.lists{
+	position: relative;
+	display: inline-flex;
+}
 .card {
 	position: relative;
-	width: 300px;
-	height: 360px;
+	width: 360px;
+	height: 320px;
 	background: rgb(231, 231, 231);
 	border-radius: 20px;
 	overflow: hidden;
-
+	margin: 0 14px 14px 0;
+	border: 1px solid transparent;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+	&:hover{
+		border: 1px solid #fd8f22;
+	}
 	.content-1 {
 		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		// width: 100%;
 		// height: 40%;
 		// background-image: linear-gradient(to bottom right,#fd8f22,#feb11f,#ffc519);
 		
 		img {
-			width: 300px;
-			height: 200px;
+			width: 100%;
+			height: 180px;
 			// position: absolute;
 			// top: 60%;
 			// transform: translateY(-50%);
@@ -24,7 +36,7 @@
 	.content-2 {
 		position: relative;
 		// height: 52%;
-		padding: 20px 20px 0 20px;
+		padding: 10px 20px 0 20px;
 		.branding {
 			span{
 				font-size: 11px;
@@ -33,7 +45,7 @@
 			}
 			h4 {
 				margin: 0;
-				font-size: 15px;
+				font-size: 14px;
 				font-weight: 500;
 			}
 		}
@@ -41,7 +53,8 @@
 	.content-3{
 		display: flex;
 		justify-content: space-between;
-		padding: 20px;
+		padding: 10px 20px 20px 20px;
+		
 		.sku {
 			h5{
 				font-size: 11px;
@@ -57,7 +70,6 @@
 				font-size: 12px;
 				font-weight: 600;
 				border-radius: 50%;
-				margin: 2px 5px;
 				cursor: pointer;
 				transition: all 0.5s;
 				// &:hover {
@@ -77,6 +89,7 @@
 				border-radius: 4px;
 				color: #333333;
 				font-weight: 700;
+				font-size: 14px;
 			}
 		}
 
