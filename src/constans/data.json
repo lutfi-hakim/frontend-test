@@ -1,0 +1,76 @@
+{
+    "data":[
+        {
+            "id":1,
+            "nama":"Lenovo",
+            "sku":"A01",
+            "brand":"Lenovo",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"Lenovo Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        },
+        {
+            "id":1,
+            "nama":"Asus",
+            "sku":"A01",
+            "brand":"Asus",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"Asus Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        },
+        {
+            "id":1,
+            "nama":"Macbook",
+            "sku":"A01",
+            "brand":"Macbook",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"Macbook Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        },
+        {
+            "id":1,
+            "nama":"HP",
+            "sku":"A01",
+            "brand":"HP",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"HP Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        },
+        {
+            "id":1,
+            "nama":"Xiomi",
+            "sku":"A01",
+            "brand":"Xiomi",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"Xiomi Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        },
+        {
+            "id":1,
+            "nama":"Axios",
+            "sku":"A01",
+            "brand":"Axios",
+            "deskripsi":"bagus",
+            "variasi":[{
+                "nama":"Axios Slim",
+                "sku_variasi":"A01v",
+                "harga":"100000000"
+            }]
+        }
+    ]
+}

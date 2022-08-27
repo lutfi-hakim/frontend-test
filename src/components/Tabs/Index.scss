@@ -1,0 +1,42 @@
+.wrapper {
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.tabs {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    .tabitem {
+        cursor: pointer;
+        text-align: center;
+        padding: 10px 15px;
+        border-bottom: 1px solid #c8c8c8;
+
+        &:last-child{
+          border-bottom: none;
+        }
+    }
+    .tabitem--inactive {
+        opacity: 0.3;
+        filter: grayscale(100%);
+    }
+    .tabitem__title {
+        color: #333333;
+        font-size: 12px;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+  
+.content {
+  font-size: 22px;
+  width: 80%;
+  margin-left: 20px;
+}
