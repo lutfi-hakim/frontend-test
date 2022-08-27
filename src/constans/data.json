@@ -47,30 +47,6 @@
                 "sku_variasi":"A01v",
                 "harga":"100000000"
             }]
-        },
-        {
-            "id":1,
-            "nama":"Xiomi",
-            "sku":"A01",
-            "brand":"Xiomi",
-            "deskripsi":"bagus",
-            "variasi":[{
-                "nama":"Xiomi Slim",
-                "sku_variasi":"A01v",
-                "harga":"100000000"
-            }]
-        },
-        {
-            "id":1,
-            "nama":"Axios",
-            "sku":"A01",
-            "brand":"Axios",
-            "deskripsi":"bagus",
-            "variasi":[{
-                "nama":"Axios Slim",
-                "sku_variasi":"A01v",
-                "harga":"100000000"
-            }]
         }
     ]
 }
