@@ -1,16 +1,11 @@
 import React from "react";
-import ListItem from "../components/Cards/ListItem";
-import Tabs from "../components/Tabs/Index";
-import Product from "../parts/Product/Product";
 
-import data from "../constans/data.json";
+import Product from "../parts/Product/Product";
 
 function Home() {
   return (
     <div className="container">
-      <Tabs />
-      {/* <Product /> */}
-      {/* <ListItem /> */}
+      <Product />
     </div>
   );
 }

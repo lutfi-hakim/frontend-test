@@ -11,17 +11,29 @@
 
         .manus{
             display: flex;
+            cursor: pointer;
             div{
                 margin: 0 0 0 10px;
             }
             .login{
-                button{
+                a{
                     padding: 5px 15px;
+                    text-decoration: none;
+                    list-style-type: none;
                     color: #ffffff;
                     background-image: linear-gradient(to bottom right,#fd8f22,#feb11f,#ffc519);
                     border: none;
                     border-radius: 4px;
                     cursor: pointer;
+                }
+            }
+            .user-login{
+                display: flex;
+                padding-left: 10px;
+                border-left: 1px solid #bbb;
+                img{
+                    width: 25px;
+                    margin-right: 3px;
                 }
             }
             .logut{

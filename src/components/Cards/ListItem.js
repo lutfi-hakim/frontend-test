@@ -3,7 +3,6 @@ import React from "react";
 import "./listitem.scss";
 
 function ListItem({ data }) {
-  // console.log(data);
   return (
     <>
       {data &&
