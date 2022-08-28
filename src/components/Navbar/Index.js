@@ -1,13 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+
 import IconUser from "../../assets/icon/user.svg";
 import "./Index.scss";
+import { useDispatch, useSelector } from "react-redux";
 
-function Navbar() {
-  const [authUser, setAuthUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || ""
-  );
+function Navbar({ user }) {
+  console.log(user);
 
   const handleLogut = (e) => {
     e.preventDefault();
@@ -15,26 +13,37 @@ function Navbar() {
     window.location.replace("/");
   };
 
+  const [loading, setLoading] = useState("");
+  useEffect(() => {
+    setLoading(user);
+  }, [setLoading]);
+
+  const userRe = useSelector((state) => state.login?.payload);
+
   return (
     <div className="header">
       <div className="container">
         <div className="brand">STORE</div>
         <div className="manus">
           <div className="product">Product</div>
-          {authUser.username == undefined ? (
-            <div className="login">
-              <a href="/login">Login</a>
-            </div>
-          ) : (
+          {!user || user == null || user == undefined ? (
+            <>
+              <div className="login">
+                <a href="/login">Login</a>
+              </div>
+            </>
+          ) : user.username != null ? (
             <>
               <div className="user-login">
                 <img src={IconUser} alt="" />
-                <span>{authUser.username}</span>
+                <span>{user ? user.username : "Anonime"}</span>
               </div>
               <div className="logut">
                 <button onClick={handleLogut}>Logout</button>
               </div>
             </>
+          ) : (
+            ""
           )}
         </div>
       </div>

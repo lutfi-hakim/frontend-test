@@ -22,14 +22,7 @@ function Login() {
     e.preventDefault();
     dispatch(login(username, pass));
     navigate("/user/dashboard");
-  };
-
-  const [authTokens, setAuthTokens] = useState(
-    localStorage.getItem("tokens") || ""
-  );
-  const setTokens = (data) => {
-    localStorage.setItem("tokens", JSON.stringify(data));
-    setAuthTokens(data);
+    window.location.reload();
   };
 
   return (
@@ -59,10 +52,10 @@ function Login() {
           onChange={(e) => handleChangePass(e.target.value)}
         />
 
-        <a class="forgot" href="#">
+        <a className="forgot" href="#">
           Forgot Password?
         </a>
-        <a class="register" href="#">
+        <a className="register" href="#">
           Register
         </a>
 
