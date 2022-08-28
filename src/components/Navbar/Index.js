@@ -5,8 +5,6 @@ import "./Index.scss";
 import { useDispatch, useSelector } from "react-redux";
 
 function Navbar({ user }) {
-  console.log(user);
-
   const handleLogut = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
@@ -25,7 +23,9 @@ function Navbar({ user }) {
       <div className="container">
         <div className="brand">STORE</div>
         <div className="manus">
-          <div className="product">Product</div>
+          <div className="product">
+            <a href="/user/dashboard">Product</a>
+          </div>
           {!user || user == null || user == undefined ? (
             <>
               <div className="login">

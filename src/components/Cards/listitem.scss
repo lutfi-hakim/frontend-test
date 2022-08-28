@@ -5,7 +5,7 @@
 .card {
 	position: relative;
 	width: 360px;
-	height: 320px;
+	height: 340px;
 	background: rgb(231, 231, 231);
 	border-radius: 20px;
 	overflow: hidden;
@@ -45,7 +45,7 @@
 	.content-3{
 		display: flex;
 		justify-content: space-between;
-		padding: 10px 20px 20px 20px;
+		padding: 10px 20px;
 		
 		.sku {
 			h5{
@@ -80,9 +80,31 @@
 				font-size: 14px;
 			}
 		}
-
 	}
+	.actions{
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 20px;
+		.edit{
+			text-decoration: none;
+			font-size: 11px;
+			font-weight: 500;
+			border: 1px solid #bbb;
+			border-radius: 6px;
+			padding: 5px 10px;
+			cursor: pointer;
+		}
+		.delete{
+			cursor: pointer;
+			text-decoration: none;
+			font-size: 11px;
+			font-weight: 500;
+			border: 1px solid #bbb;
+			border-radius: 6px;
+			padding: 5px 10px;
+		}
 	}
+}
 
 		
 	

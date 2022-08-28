@@ -76,6 +76,33 @@
                 }
               }
         }
+        
+        .variasi{
+            position: relative;
+            .variasi-add{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .btn-add{
+                    cursor: pointer;
+                    background: #fd8f22;
+                    color: #ffffff;
+                    padding: 8px 14px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    border-radius: 6px;
+                }
+            }
+            .variasi-input{
+                display: flex;
+                .add-input{
+                    margin-right: 10px;
+                    &:last-child{
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
     }
 
     input[type=submit] {

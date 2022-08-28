@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Index";
 import Login from "./parts/Login/Login";
 import Dashboard from "./pages/Dashboard";
-import { useState } from "react";
+
+import Product from "./pages/Product";
 
 function App() {
   const authUser = JSON.parse(localStorage.getItem("user"));
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/user/dashboard" element={<Dashboard />} />
           <Route exact path="/login" element={<Login />} />
+          <Route path="/product/edit/:id" element={<Product />} />
         </Routes>
       </Router>
     </div>

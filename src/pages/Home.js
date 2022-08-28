@@ -4,7 +4,7 @@ import Product from "../parts/Product/Product";
 
 function Home() {
   return (
-    <div className="container">
+    <div className="container" style={{ marginTop: 40 }}>
       <Product />
     </div>
   );

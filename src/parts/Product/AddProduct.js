@@ -10,6 +10,12 @@ import { addProduct } from "../../store/actions/product";
 import { useNavigate } from "react-router-dom";
 
 function AddProduct() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [sku, setSku] = useState("");
+  const [brand, setBrand] = useState("");
+  const [description, setDescription] = useState("");
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -20,20 +26,47 @@ function AddProduct() {
   // );
   const updateTextDescription = async (state) => {
     await setEditorState(state);
-
     const data = convertToRaw(editorState.getCurrentContent());
-
     if (data) {
       console.log(data);
     }
   };
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [sku, setSku] = useState("");
-  const [brand, setBrand] = useState("");
-  const [description, setDescription] = useState("");
+  const inputArr = [
+    {
+      type: "text",
+      name: "",
+      id: 1,
+      value: "",
+    },
+  ];
+
+  const [arr, setArr] = useState(inputArr);
+  console.log("variasi:", arr);
+  const addInput = () => {
+    setArr((s) => {
+      return [
+        ...s,
+        {
+          type: "text",
+          value: "",
+        },
+      ];
+    });
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const index = e.target.name;
+    console.log(index);
+    setArr((s) => {
+      const newArr = s.slice();
+      newArr[index] = e.target.value;
+
+      return newArr;
+    });
+  };
 
   const handleChangeName = (text) => {
     setName(text);
@@ -48,7 +81,25 @@ function AddProduct() {
   };
 
   const handleSubmitForm = (e) => {
-    e.preventDefault();
+    const items = [
+      {
+        id: Math.random().toString(16).slice(2),
+        name: name,
+        image:
+          "https://www.agres.id/assets/images/product/616157e06505c_lenovo-laptop-yoga-slim-7i-pro-14-subseries-gallery-1.png",
+        sku: sku,
+        brand: brand,
+        description: description,
+      },
+    ];
+
+    const oldTest = localStorage.getItem("products")
+      ? localStorage.getItem("products")
+      : "[]";
+    const arrTest = JSON.parse(oldTest);
+    localStorage.setItem("products", JSON.stringify([...arrTest, ...items]));
+    alert("Sudah di Tangkap!");
+
     dispatch(addProduct(name, sku, brand));
     navigate("/");
   };
@@ -113,6 +164,53 @@ function AddProduct() {
               }}
             />
           </div>
+        </div>
+        <div className="variasi">
+          <div className="variasi-add">
+            <label htmlFor="variasi">Variasi</label>
+            <a className="btn-add" onClick={addInput}>
+              + Tambah Variasi
+            </a>
+          </div>
+          {arr.map((item, i) => {
+            return (
+              <div className="variasi-input">
+                <div className="add-input">
+                  <label htmlFor="nama">{item.name}</label>
+                  <input
+                    onChange={handleChange}
+                    name={item.name}
+                    value={item.value}
+                    id={item.id}
+                    type={item.type}
+                    size="40"
+                  />
+                </div>
+                {/* <div className="add-input">
+                  <label htmlFor="sku_var">SKU</label>
+                  <input
+                    onChange={handleChange}
+                    name="sku_var"
+                    value={item.value}
+                    id={i}
+                    type={item.type}
+                    size="40"
+                  />
+                </div>
+                <div className="add-input">
+                  <label htmlFor="harga">Harga Jual</label>
+                  <input
+                    onChange={handleChange}
+                    name="harga"
+                    value={item.value}
+                    id={i}
+                    type={item.type}
+                    size="40"
+                  />
+                </div> */}
+              </div>
+            );
+          })}
         </div>
         <input type="submit" name="submit" value="Simpan" />
       </form>
