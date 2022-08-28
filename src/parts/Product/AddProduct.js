@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
-
+import {
+  convertFromRaw,
+  EditorState,
+  ContentState,
+  convertToRaw,
+} from "draft-js";
+import { convertToHTML } from "draft-convert";
 import { Editor } from "react-draft-wysiwyg";
+import DOMPurify from "dompurify";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import "./AddProduct.scss";
@@ -18,23 +24,45 @@ function AddProduct() {
   const [name, setName] = useState("");
   const [sku, setSku] = useState("");
   const [brand, setBrand] = useState("");
-  const [description, setDescription] = useState("");
+
+  const [inputList, setinputList] = useState([
+    { nama: "", sku: "", harga: "" },
+  ]);
+
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  // useEffect(() => {
-  //   setEditorState(
-  //     EditorState.createWithContent(
-  //       convertFromRaw(JSON.parse(setDescription()))
-  //     )
-  //   );
-  // });
-  const updateTextDescription = async (state) => {
-    await setEditorState(state);
-    const data = convertToRaw(editorState.getCurrentContent());
-    if (data) {
-      console.log(data);
-    }
+  const [convertedContent, setConvertedContent] = useState(null);
+  console.log(convertedContent);
+  const handleEditorChange = (state) => {
+    setEditorState(state);
+    convertContentToHTML();
+  };
+  const convertContentToHTML = () => {
+    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+    setConvertedContent(currentContentAsHTML);
+  };
+  const createMarkup = (html) => {
+    return {
+      __html: DOMPurify.sanitize(html),
+    };
+  };
+
+  const handleinputchange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setinputList(list);
+  };
+
+  const handleremove = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setinputList(list);
+  };
+
+  const handleaddclick = () => {
+    setinputList([...inputList, { nama: "", sku: "", harga: "" }]);
   };
 
   const handleChangeName = (text) => {
@@ -58,7 +86,8 @@ function AddProduct() {
           "https://www.agres.id/assets/images/product/616157e06505c_lenovo-laptop-yoga-slim-7i-pro-14-subseries-gallery-1.png",
         sku: sku,
         brand: brand,
-        description: description,
+        description: convertedContent,
+        variasi: inputList,
       },
     ];
 
@@ -69,29 +98,8 @@ function AddProduct() {
     localStorage.setItem("products", JSON.stringify([...arrTest, ...items]));
     alert("Sudah di Tangkap!");
 
-    dispatch(addProduct(name, sku, brand));
+    dispatch(addProduct(items));
     navigate("/");
-  };
-
-  const [inputList, setinputList] = useState([
-    { nama: "", sku: "", harga: "" },
-  ]);
-  console.log(inputList);
-  const handleinputchange = (e, index) => {
-    const { name, value } = e.target;
-    const list = [...inputList];
-    list[index][name] = value;
-    setinputList(list);
-  };
-
-  const handleremove = (index) => {
-    const list = [...inputList];
-    list.splice(index, 1);
-    setinputList(list);
-  };
-
-  const handleaddclick = () => {
-    setinputList([...inputList, { nama: "", sku: "", harga: "" }]);
   };
 
   return (
@@ -143,17 +151,20 @@ function AddProduct() {
           <div className="editor">
             <Editor
               editorState={editorState}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-              onEditorStateChange={updateTextDescription}
-              placeholder="Enter your text here:"
+              onEditorStateChange={handleEditorChange}
+              wrapperClassName="wrapper-class"
+              editorClassName="editor-class"
+              toolbarClassName="toolbar-class"
               editorStyle={{
                 height: 200,
                 fontSize: 14,
               }}
             />
           </div>
+          <div
+            className="preview"
+            dangerouslySetInnerHTML={createMarkup(convertedContent)}
+          ></div>
         </div>
         <div className="variasi">
           <div className="variasi-add">
