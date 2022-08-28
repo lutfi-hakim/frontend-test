@@ -3,7 +3,7 @@ import "./listitem.scss";
 
 function ListItem({ data }) {
   const [getLo, setGetLo] = useState([]);
-  console.log(getLo);
+  // console.log(getLo);
   useEffect(() => {
     const lokData = JSON.parse(localStorage.getItem("products"));
     setGetLo(lokData);
@@ -31,14 +31,14 @@ function ListItem({ data }) {
                 </div>
                 <div className="content-2">
                   <div className="branding">
-                    <span>Lenovo Premium</span>
-                    <h4>Lenovo Slim Idepad 4</h4>
+                    <span>{item.brand}</span>
+                    <h4>{item.name}</h4>
                   </div>
                 </div>
                 <div className="content-3">
                   <div className="sku">
                     <h5>SKU</h5>
-                    <span>A01</span>
+                    <span>{item.sku}</span>
                   </div>
                   <div className="price">
                     <h5>Harga</h5>

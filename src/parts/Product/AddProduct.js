@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { convertToRaw, EditorState } from "draft-js";
+import { convertFromRaw, convertToRaw, EditorState } from "draft-js";
 
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -8,6 +8,9 @@ import "./AddProduct.scss";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../store/actions/product";
 import { useNavigate } from "react-router-dom";
+
+import IconAdd from "../../assets/icon/add.svg";
+import IconDel from "../../assets/icon/delete.svg";
 
 function AddProduct() {
   const dispatch = useDispatch();
@@ -19,53 +22,19 @@ function AddProduct() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  // setEditorState(
-  //   EditorState.createWithContent(
-  //     convertFromRaw(JSON.parse(current.description))
-  //   )
-  // );
+  // useEffect(() => {
+  //   setEditorState(
+  //     EditorState.createWithContent(
+  //       convertFromRaw(JSON.parse(setDescription()))
+  //     )
+  //   );
+  // });
   const updateTextDescription = async (state) => {
     await setEditorState(state);
     const data = convertToRaw(editorState.getCurrentContent());
     if (data) {
       console.log(data);
     }
-  };
-
-  const inputArr = [
-    {
-      type: "text",
-      name: "",
-      id: 1,
-      value: "",
-    },
-  ];
-
-  const [arr, setArr] = useState(inputArr);
-  console.log("variasi:", arr);
-  const addInput = () => {
-    setArr((s) => {
-      return [
-        ...s,
-        {
-          type: "text",
-          value: "",
-        },
-      ];
-    });
-  };
-
-  const handleChange = (e) => {
-    e.preventDefault();
-
-    const index = e.target.name;
-    console.log(index);
-    setArr((s) => {
-      const newArr = s.slice();
-      newArr[index] = e.target.value;
-
-      return newArr;
-    });
   };
 
   const handleChangeName = (text) => {
@@ -102,6 +71,27 @@ function AddProduct() {
 
     dispatch(addProduct(name, sku, brand));
     navigate("/");
+  };
+
+  const [inputList, setinputList] = useState([
+    { nama: "", sku: "", harga: "" },
+  ]);
+  console.log(inputList);
+  const handleinputchange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...inputList];
+    list[index][name] = value;
+    setinputList(list);
+  };
+
+  const handleremove = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
+    setinputList(list);
+  };
+
+  const handleaddclick = () => {
+    setinputList([...inputList, { nama: "", sku: "", harga: "" }]);
   };
 
   return (
@@ -168,50 +158,55 @@ function AddProduct() {
         <div className="variasi">
           <div className="variasi-add">
             <label htmlFor="variasi">Variasi</label>
-            <a className="btn-add" onClick={addInput}>
-              + Tambah Variasi
-            </a>
           </div>
-          {arr.map((item, i) => {
+          {inputList.map((x, i) => {
             return (
               <div className="variasi-input">
                 <div className="add-input">
-                  <label htmlFor="nama">{item.name}</label>
+                  <label>Nama</label>
                   <input
-                    onChange={handleChange}
-                    name={item.name}
-                    value={item.value}
-                    id={item.id}
-                    type={item.type}
-                    size="40"
-                  />
-                </div>
-                {/* <div className="add-input">
-                  <label htmlFor="sku_var">SKU</label>
-                  <input
-                    onChange={handleChange}
-                    name="sku_var"
-                    value={item.value}
-                    id={i}
-                    type={item.type}
-                    size="40"
+                    type="text"
+                    name="nama"
+                    placeholder="Nama"
+                    // value={inputList["nama"]}
+                    onChange={(e) => handleinputchange(e, i)}
                   />
                 </div>
                 <div className="add-input">
-                  <label htmlFor="harga">Harga Jual</label>
+                  <label>SKU</label>
                   <input
-                    onChange={handleChange}
-                    name="harga"
-                    value={item.value}
-                    id={i}
-                    type={item.type}
-                    size="40"
+                    type="text"
+                    name="sku"
+                    placeholder="SKU"
+                    onChange={(e) => handleinputchange(e, i)}
                   />
-                </div> */}
+                </div>
+                <div className="add-input">
+                  <label>Harga</label>
+                  <input
+                    type="text"
+                    name="harga"
+                    placeholder="Harga"
+                    onChange={(e) => handleinputchange(e, i)}
+                  />
+                </div>
+                <div className="action-va">
+                  {inputList.length !== 1 && (
+                    <button onClick={() => handleremove(i)}>
+                      <img src={IconDel} alt="" />
+                    </button>
+                  )}
+                  {inputList.length - 1 === i && (
+                    <button onClick={handleaddclick}>
+                      <img src={IconAdd} alt="" />
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}
         </div>
+
         <input type="submit" name="submit" value="Simpan" />
       </form>
     </div>
