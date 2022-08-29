@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Navbar user={authUser} />
-      <Router basename="/frontend-test">
+      <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
