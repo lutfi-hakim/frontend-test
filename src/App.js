@@ -16,8 +16,8 @@ function App() {
       <Router basename="/frontend-test">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/user/dashboard" element={<Dashboard />} />
-          <Route exact path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/user/dashboard" element={<Dashboard />} />
           <Route path="/product/edit/:id" element={<Product />} />
         </Routes>
       </Router>
