@@ -96,7 +96,7 @@ function AddProduct() {
       : "[]";
     const arrTest = JSON.parse(oldTest);
     localStorage.setItem("products", JSON.stringify([...arrTest, ...items]));
-    alert("Sudah di Tangkap!");
+    alert("Berhasil!");
 
     dispatch(addProduct(items));
     navigate("/");
@@ -137,9 +137,8 @@ function AddProduct() {
           value={brand}
           onChange={(e) => handleChangeBrand(e.target.value)}
         >
-          <option disabled selected>
-            Select Cource
-          </option>
+          <option selected>Select Cource</option>
+          <option value="">...</option>
           <option value="Lenovo">Lenovo</option>
           <option value="Acer">Acer</option>
           <option value="Asus">Asus</option>
@@ -161,10 +160,10 @@ function AddProduct() {
               }}
             />
           </div>
-          <div
+          {/* <div
             className="preview"
             dangerouslySetInnerHTML={createMarkup(convertedContent)}
-          ></div>
+          ></div> */}
         </div>
         <div className="variasi">
           <div className="variasi-add">

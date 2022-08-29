@@ -5,7 +5,7 @@
 .card {
 	position: relative;
 	width: 360px;
-	height: 340px;
+	height: 360px;
 	background: rgb(231, 231, 231);
 	border-radius: 20px;
 	overflow: hidden;
@@ -22,13 +22,13 @@
 		justify-content: center;
 		img {
 			width: 100%;
-			height: 180px;
+			height: 150px;
 			z-index: 100;
 		}
 	}
 	.content-2 {
 		position: relative;
-		padding: 10px 20px 0 20px;
+		padding: 0px 20px 0 20px;
 		.branding {
 			span{
 				font-size: 11px;
@@ -41,6 +41,16 @@
 				font-weight: 500;
 			}
 		}
+	}
+	.desk{
+		padding: 0 20px;
+		margin: 0;
+		
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		font-size: 12px;
 	}
 	.content-3{
 		display: flex;
@@ -66,7 +76,7 @@
 				transition: all 0.5s;
 			}
 		}
-		
+
 		.price {
 			h5{
 				margin: 0;

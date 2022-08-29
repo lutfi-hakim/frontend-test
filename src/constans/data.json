@@ -5,7 +5,9 @@
             "nama":"Lenovo",
             "sku":"A01",
             "brand":"Lenovo",
-            "deskripsi":"bagus",
+            "rating":4.8,
+            "sold":"30",
+            "deskripsi":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "variasi":[{
                 "nama":"Lenovo Slim",
                 "sku_variasi":"A01v",
@@ -17,7 +19,9 @@
             "nama":"Asus",
             "sku":"A01",
             "brand":"Asus",
-            "deskripsi":"bagus",
+            "rating":4.8,
+            "sold":"30",
+            "deskripsi":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "variasi":[{
                 "nama":"Asus Slim",
                 "sku_variasi":"A01v",
@@ -29,7 +33,9 @@
             "nama":"Macbook",
             "sku":"A01",
             "brand":"Macbook",
-            "deskripsi":"bagus",
+            "rating":4.8,
+            "sold":"30",
+            "deskripsi":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "variasi":[{
                 "nama":"Macbook Slim",
                 "sku_variasi":"A01v",
@@ -41,7 +47,9 @@
             "nama":"HP",
             "sku":"A01",
             "brand":"HP",
-            "deskripsi":"bagus",
+            "rating":4.8,
+            "sold":"30",
+            "deskripsi":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
             "variasi":[{
                 "nama":"HP Slim",
                 "sku_variasi":"A01v",

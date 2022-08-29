@@ -1,11 +1,11 @@
 import React from "react";
-
-import Product from "../parts/Product/Product";
+import CardHome from "../components/Cards/CardHome";
+import data from "../constans/data.json";
 
 function Home() {
   return (
     <div className="container" style={{ marginTop: 40 }}>
-      <Product />
+      <CardHome data={data} />
     </div>
   );
 }

@@ -23,9 +23,6 @@ function Navbar({ user }) {
       <div className="container">
         <div className="brand">STORE</div>
         <div className="manus">
-          <div className="product">
-            <a href="/user/dashboard">Product</a>
-          </div>
           {!user || user == null || user == undefined ? (
             <>
               <div className="login">
@@ -34,6 +31,9 @@ function Navbar({ user }) {
             </>
           ) : user.username != null ? (
             <>
+              <div className="product">
+                <a href="/user/dashboard">Product</a>
+              </div>
               <div className="user-login">
                 <img src={IconUser} alt="" />
                 <span>{user ? user.username : "Anonime"}</span>
